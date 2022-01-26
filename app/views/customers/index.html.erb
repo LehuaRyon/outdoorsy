@@ -40,9 +40,8 @@
 
 <h3>Import Customers</h3>
 <%= form_tag import_customers_path, multipart: true do %>
-<%# come right back to this page, do not go to another %>
   <%= file_field_tag :file %>
   <%= submit_tag "Upload File" %>
-<%= end %>
+<% end %>
 
 <%= link_to 'New Customer', new_customer_path %>
