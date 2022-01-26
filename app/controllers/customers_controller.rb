@@ -57,6 +57,11 @@ class CustomersController < ApplicationController
     end
   end
 
+  def import
+    Customer.import(params[:file])
+    redirect_to customers_path, notice: "Customers Imported Successfully"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
