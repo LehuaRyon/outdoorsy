@@ -2,36 +2,47 @@
 
 <h1>Customers</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Vehicle name</th>
-      <th>Vehicle type</th>
-      <th>Vehicle length</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Vehicle name</th>
+          <th>Vehicle type</th>
+          <th>Vehicle length</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.first_name %></td>
-        <td><%= customer.last_name %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.vehicle_name %></td>
-        <td><%= customer.vehicle_type %></td>
-        <td><%= customer.vehicle_length %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.first_name %></td>
+            <td><%= customer.last_name %></td>
+            <td><%= customer.email %></td>
+            <td><%= customer.vehicle_name %></td>
+            <td><%= customer.vehicle_type %></td>
+            <td><%= customer.vehicle_length %></td>
+            <td><%= link_to 'Show', customer %></td>
+            <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+            <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <br>
+
+<h3>Import Customers</h3>
+<%= form_tag import_customers_path, multipart: true do %>
+<%# come right back to this page, do not go to another %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload File" %>
+<%= end %>
 
 <%= link_to 'New Customer', new_customer_path %>
