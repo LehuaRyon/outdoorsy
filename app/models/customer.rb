@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
         #   end
 
         # col_sep only accepts one value as a string
-        byebug
+
         CSV.foreach(file.path, col_sep: "|") do |row|
             # CSV.foreach(file.path) do |row|
                 # Customer.create! row.to_hash
@@ -24,4 +24,9 @@ class Customer < ApplicationRecord
                 })
         end
     end
+
+    def full_name
+        "#{first_name} #{last_name}"
+    end
+
 end

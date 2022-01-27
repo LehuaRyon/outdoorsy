@@ -7,12 +7,13 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>First name</th>
-          <th>Last name</th>
+          <%# <th>First name</th>
+          <th>Last name</th> %>
+          <th>Full Name</th>
           <th>Email</th>
-          <th>Vehicle name</th>
-          <th>Vehicle type</th>
-          <th>Vehicle length</th>
+          <th>Vehicle Name</th>
+          <th>Vehicle Type</th>
+          <th>Vehicle Length</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -20,8 +21,9 @@
       <tbody>
         <% @customers.each do |customer| %>
           <tr>
-            <td><%= customer.first_name %></td>
-            <td><%= customer.last_name %></td>
+            <%# <td><%= customer.first_name %>
+            <%# <td><%= customer.last_name %>
+            <td><%= customer.full_name%></td>
             <td><%= customer.email %></td>
             <td><%= customer.vehicle_name %></td>
             <td><%= customer.vehicle_type %></td>
