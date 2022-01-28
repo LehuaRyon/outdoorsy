@@ -19,11 +19,8 @@ class Customer < ApplicationRecord
         # col_sep only accepts one value as a string
 
         CSV.foreach(file.path, col_sep: "|") do |row|
-            # CSV.foreach(file.path) do |row|
-                # Customer.create! row.to_hash
-                # if does not work, throw error
-
-                Customer.create({
+                # Customer.create!({
+                Customer.find_or_create_by({
                     first_name: row[0],
                     last_name: row[1],
                     email: row[2],
