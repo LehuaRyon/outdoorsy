@@ -2,16 +2,25 @@
 
 <h1>Customers - Total: <%= Customer.count %> </h1>
 
+<p>Create: <%= link_to 'New Customer', new_customer_path %></p>
+
 <p>Sort by: 
 <%= link_to "Vehicle Type", customers_path(order: 'vehicle_type') %>
 <%= link_to "Full Name", customers_path(order: 'full_name') %>
 </p>
 
 <%= form_with url: customers_path, method: :get do |form| %>
-  <%= form.label :search, "Search by Vehicle Name:" %>
-  <%= form.text_field :search %>
+  <%= form.label :search_by_first_name_or_last_name, "Search by Customer's First Name or Last Name:" %>
+  <%= form.text_field :search_by_first_name_or_last_name %>
   <%= form.submit "Search" %>
 <% end %>
+<br>
+<%= form_with url: customers_path, method: :get do |form| %>
+  <%= form.label :search_vehicle_name, "Search by Vehicle Name:" %>
+  <%= form.text_field :search_vehicle_name %>
+  <%= form.submit "Search" %>
+<% end %>
+<br>
 
 <%# <%= form_with(scope: "customer") do |f| %> 
   <%# <%= f.label :vehicle_type, "Sort by: Vehicle Type" %> 
@@ -65,4 +74,3 @@
   <%= submit_tag "Upload File" %>
 <% end %>
 
-<%= link_to 'New Customer', new_customer_path %>
