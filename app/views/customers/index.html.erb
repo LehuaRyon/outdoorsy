@@ -2,6 +2,8 @@
 
 <h1>Customers</h1>
 
+<%# <p><%= button_to 'Sort By Vehicle Type', method: :order_by_vehicle_type %>
+
 <div class="media">
   <div class="media-body">
     <table class="table table-hover">
@@ -31,7 +33,7 @@
             <td><%= link_to 'Show', customer %></td>
             <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
             <%# <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }</td> %>
-            <td><%= button_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= button_to 'Destroy', customer, method: :delete %></td>
           </tr>
         <% end %>
       </tbody>

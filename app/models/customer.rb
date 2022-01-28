@@ -25,6 +25,24 @@ class Customer < ApplicationRecord
         end
     end
 
+    # scope :order_by_vehicle_type, -> {customer(vehicle_type: :asc)}
+    def self.order_by_vehicle_type
+        Customer.order(vehicle_type: :asc)
+    end
+
+    # def self.sort_by_vehicle_type
+    #     Customer.all.sort_by { |customer| customer.vehicle_type }
+    # end
+
+#   def self.search_by_vehicle_type(search)
+#     vehicle_type = Customer.find_by(vehicle_type: search)
+#     if vehicle_type
+#       self.where(vehicle_type: vehicle_type)
+#     else
+#       Customer.order_by_created_at
+#     end
+#   end
+
     def full_name
         "#{first_name} #{last_name}"
     end
