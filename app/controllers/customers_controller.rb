@@ -8,18 +8,17 @@ class CustomersController < ApplicationController
   # end
 
   def index
-
-    # @customers = Customer.order(:vehicle_type)
-    # full_name = 
-
     if params[:order] == 'vehicle_type'
         @customers = Customer.order('vehicle_type')
     elsif params[:order] == 'full_name'
         @customers = Customer.sort_by_full_name
     # elsif params[:order] == 'first_name'
     #     @customers = Customer.order('first_name')
+    elsif params[:search]
+      @customers = Customer.search_by_vehicle_name(params[:search])
     else
         @customers = Customer.all
+        @customers = Customer.order_by_created_at
     end 
 
 end

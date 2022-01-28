@@ -7,6 +7,12 @@
 <%= link_to "Full Name", customers_path(order: 'full_name') %>
 </p>
 
+<%= form_with url: customers_path, method: :get do |form| %>
+  <%= form.label :search, "Search by vehicle's name:" %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <%# <%= form_with(scope: "customer") do |f| %> 
   <%# <%= f.label :vehicle_type, "Sort by: Vehicle Type" %> 
   <%# <%= f.collection_select :id, Customer.order(vehicle_type: :asc), :id, :vehicle_type %> 

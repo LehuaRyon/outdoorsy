@@ -4,6 +4,11 @@ class Customer < ApplicationRecord
     #     Customer.order(vehicle_type: :asc)
     # end
 
+    scope :order_by_created_at, -> {order(created_at: :desc)}
+    # def self.order_by_created_at
+    #   Customer.order(created_at: :desc)
+    # end
+
     def self.sort_by_full_name
         # Customer.all.sort_by { |customer| customer.first_name customer.last_name }
         Customer.all.sort_by { |customer| [customer[:first_name], customer[:last_name]] }
@@ -27,7 +32,7 @@ class Customer < ApplicationRecord
     def self.import(file)
         separators = ["|", ","]
         csv_first_input = File.open(file).first
-        CSV.foreach(file, headers: false, col_sep:  separators.detect{ |separator| csv_first_input.include?(separator)}) do |row|
+        CSV.foreach(file, headers: false, col_sep:  separators.detect { |separator| csv_first_input.include?(separator)}) do |row|
                 # Customer.create!({
                 Customer.find_or_create_by({
                     first_name: row[0],
@@ -40,10 +45,21 @@ class Customer < ApplicationRecord
         end
     end
 
-#   def self.search_by_vehicle_type(search_vehicle)
-#     vehicle_type = Customer.find_by(vehicle_type: search_vehicle)
-#     if vehicle_type
-#       self.where(vehicle_type: vehicle_type)
+    def self.search_by_vehicle_name(search)
+        search_downcase_vehicle_name = search.downcase
+        downcased_vehicle_names = Customer.all.map { |customer| customer.vehicle_name.downcase}
+        vehicle_name = downcased_vehicle_names.find { |name| name == search_downcase_vehicle_name}.titleize
+        if vehicle_name
+          self.where(vehicle_name: vehicle_name)
+        else
+          Customer.order_by_created_at
+        end
+      end
+
+#   def self.search_by_vehicle_name(search)
+#     vehicle_name = Customer.find_by(vehicle_name: search)
+#     if vehicle_name
+#       self.where(id: vehicle_name)
 #     else
 #       Customer.order_by_created_at
 #     end
