@@ -1,5 +1,14 @@
 class Customer < ApplicationRecord
-    # set of headers, column names, will be ignored
+    scope :order_by_vehicle_type, -> {customer(vehicle_type: :asc)}
+    # def self.order_by_vehicle_type
+    #     Customer.order(vehicle_type: :asc)
+    # end
+
+    def self.sort_by_full_name
+        # Customer.all.sort_by { |customer| customer.first_name customer.last_name }
+        Customer.all.sort_by { |customer| [customer[:first_name], customer[:last_name]] }
+    end
+
     def self.import(file)
         # File.new("/tmp/big.csv").grep(/(^,|,(,|%))/).each do |row_string|
         #     CSV.parse(row_string) do |row|
@@ -25,17 +34,8 @@ class Customer < ApplicationRecord
         end
     end
 
-    # scope :order_by_vehicle_type, -> {customer(vehicle_type: :asc)}
-    def self.order_by_vehicle_type
-        Customer.order(vehicle_type: :asc)
-    end
-
-    # def self.sort_by_vehicle_type
-    #     Customer.all.sort_by { |customer| customer.vehicle_type }
-    # end
-
-#   def self.search_by_vehicle_type(search)
-#     vehicle_type = Customer.find_by(vehicle_type: search)
+#   def self.search_by_vehicle_type(search_vehicle)
+#     vehicle_type = Customer.find_by(vehicle_type: search_vehicle)
 #     if vehicle_type
 #       self.where(vehicle_type: vehicle_type)
 #     else

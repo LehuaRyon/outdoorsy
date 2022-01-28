@@ -2,10 +2,43 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: %i[ show edit update destroy ]
 
   # GET /customers or /customers.json
+  # def index
+  #   @customers = Customer.all
+  #   # @customers = Customer.order_by_vehicle_type
+  # end
+
   def index
-    # @customers = Customer.all
-    @customers = Customer.order_by_vehicle_type
-  end
+
+    # @customers = Customer.order(:vehicle_type)
+    # full_name = 
+
+    if params[:order] == 'vehicle_type'
+        @customers = Customer.order('vehicle_type')
+    elsif params[:order] == 'full_name'
+        @customers = Customer.sort_by_full_name
+    # elsif params[:order] == 'first_name'
+    #     @customers = Customer.order('first_name')
+    else
+        @customers = Customer.all
+    end 
+
+end
+
+  # def index
+  #   if params[:vehicle_type]
+  #       @customers = Customer.order_by_vehicle_type
+    # elsif params[:full_name]
+    #       @customers = Customer.order_by_full_name
+    # else
+        # if params[:search_vehicle]
+        #     @customers = Customer.search_by_vehicle_type(params[:search_vehicle]).order_by_created_at
+        # elsif params[:search_name]
+        #       @customers = Customer.search_by_full_name(params[:search_name]).order_by_created_at
+        # else
+            # @customers = Customer.all
+        # end
+  #     end
+  # end
 
   # GET /customers/1 or /customers/1.json
   def show

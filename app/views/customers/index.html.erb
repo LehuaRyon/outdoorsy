@@ -2,7 +2,17 @@
 
 <h1>Customers</h1>
 
-<%# <p><%= button_to 'Sort By Vehicle Type', method: :order_by_vehicle_type %>
+<p>Sort by: 
+<%= link_to "Vehicle Type", customers_path(order: 'vehicle_type') %>
+<%= link_to "Full Name", customers_path(order: 'full_name') %>
+</p>
+
+<%# <%= form_with(scope: "customer") do |f| %> 
+  <%# <%= f.label :vehicle_type, "Sort by: Vehicle Type" %> 
+  <%# <%= f.collection_select :id, Customer.order(vehicle_type: :asc), :id, :vehicle_type %> 
+  <%# <%= f.select :id, @customers.map { |c| [c.vehicle_type, c.id] } %>
+  <%# <%= f.submit "Sort" %> 
+<%# <% end %> 
 
 <div class="media">
   <div class="media-body">
