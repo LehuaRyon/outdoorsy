@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Customers</h1>
+<h1>Customers - Total: <%= Customer.count %> </h1>
 
 <p>Sort by: 
 <%= link_to "Vehicle Type", customers_path(order: 'vehicle_type') %>
@@ -8,7 +8,7 @@
 </p>
 
 <%= form_with url: customers_path, method: :get do |form| %>
-  <%= form.label :search, "Search by vehicle's name:" %>
+  <%= form.label :search, "Search by Vehicle Name:" %>
   <%= form.text_field :search %>
   <%= form.submit "Search" %>
 <% end %>

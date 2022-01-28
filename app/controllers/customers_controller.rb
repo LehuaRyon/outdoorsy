@@ -1,12 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[ show edit update destroy ]
 
-  # GET /customers or /customers.json
-  # def index
-  #   @customers = Customer.all
-  #   # @customers = Customer.order_by_vehicle_type
-  # end
-
   def index
     if params[:order] == 'vehicle_type'
         @customers = Customer.order('vehicle_type')
@@ -21,38 +15,18 @@ class CustomersController < ApplicationController
         @customers = Customer.order_by_created_at
     end 
 
-end
+  end
 
-  # def index
-  #   if params[:vehicle_type]
-  #       @customers = Customer.order_by_vehicle_type
-    # elsif params[:full_name]
-    #       @customers = Customer.order_by_full_name
-    # else
-        # if params[:search_vehicle]
-        #     @customers = Customer.search_by_vehicle_type(params[:search_vehicle]).order_by_created_at
-        # elsif params[:search_name]
-        #       @customers = Customer.search_by_full_name(params[:search_name]).order_by_created_at
-        # else
-            # @customers = Customer.all
-        # end
-  #     end
-  # end
-
-  # GET /customers/1 or /customers/1.json
   def show
   end
 
-  # GET /customers/new
   def new
     @customer = Customer.new
   end
 
-  # GET /customers/1/edit
   def edit
   end
 
-  # POST /customers or /customers.json
   def create
     @customer = Customer.new(customer_params)
 
@@ -67,7 +41,6 @@ end
     end
   end
 
-  # PATCH/PUT /customers/1 or /customers/1.json
   def update
     respond_to do |format|
       if @customer.update(customer_params)
@@ -80,29 +53,25 @@ end
     end
   end
 
-  # DELETE /customers/1 or /customers/1.json
   def destroy
     @customer.destroy
 
     respond_to do |format|
-      format.html { redirect_to customers_path, notice: "Customer was successfully destroyed." }
-      # format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
+      format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   def import
     Customer.import(params[:file])
-    redirect_to customers_path, notice: "Customers Imported Successfully"
+    redirect_to customers_url, notice: "Customers Imported Successfully"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :email, :vehicle_name, :vehicle_type, :vehicle_length)
     end
