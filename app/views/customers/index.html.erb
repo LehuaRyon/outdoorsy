@@ -5,8 +5,9 @@
 <p>Create: <%= link_to 'New Customer', new_customer_path %></p>
 
 <p>Sort by: 
-<%= link_to "Vehicle Type", customers_path(order: 'vehicle_type') %>
 <%= link_to "Full Name", customers_path(order: 'full_name') %>
+<%= link_to "Vehicle Type", customers_path(order: 'vehicle_type') %>
+<%= link_to "Vehicle Length", customers_path(order: 'vehicle_length') %>
 </p>
 
 <%= form_with url: customers_path, method: :get do |form| %>

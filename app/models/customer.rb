@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
     scope :order_by_vehicle_type, -> {customer(vehicle_type: :asc)}
+    scope :order_by_vehicle_type, -> {customer(vehicle_length: :asc)}
     scope :order_by_created_at, -> {order(created_at: :desc)}
 
     def self.sort_by_full_name
@@ -22,6 +23,23 @@ class Customer < ApplicationRecord
                     vehicle_name: row[4],
                     vehicle_length: row[5]
                 })
+        end
+    end
+
+    def self.to_csv
+        # CSV.generate do |csv|
+        #     csv << column_names
+        #     all.each do |customer|
+        #         csv << customer.attributes.values_at(*column_names)
+        #     end
+        # end
+
+        attributes = ["first_name", "last_name", "vehicle_type", "vehicle_name", "vehicle_length"]
+        CSV.generate do |csv|
+            csv << attributes
+            all.each do |customer|
+                csv << attributes.map { |attribute| customer.send(attribute) }
+            end
         end
     end
 

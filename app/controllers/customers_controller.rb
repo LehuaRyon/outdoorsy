@@ -4,19 +4,28 @@ class CustomersController < ApplicationController
   def index
     if params[:order] == 'vehicle_type'
       @customers = Customer.order('vehicle_type')
+    elsif params[:order] == 'vehicle_length'
+      @customers = Customer.order('vehicle_length') 
     elsif params[:order] == 'full_name'
       @customers = Customer.sort_by_full_name
-    # elsif params[:order] == 'first_name'
-    #     @customers = Customer.order('first_name')
     elsif params[:search_by_first_name_or_last_name]
       @customers = Customer.search_by_first_name_or_last_name(params[:search_by_first_name_or_last_name])
     elsif params[:search_vehicle_name]
       @customers = Customer.search_by_vehicle_name(params[:search_vehicle_name])
     else
-      @customers = Customer.all
       @customers = Customer.order_by_created_at
+      respond_to do |format|
+        format.html
+        # format.csv{ render text: @customers.to_csv }
+        format.csv { send_data @customers.to_csv, filename: "customers-#{Date.today}.csv" }
+      end  
     end 
 
+    # respond to cvs call, create cvs file for you
+    # respond_to do |format|
+    #   format.html
+    #   format.csv{ render text: @customers.to_csv }
+    # end  
   end
 
   def show
