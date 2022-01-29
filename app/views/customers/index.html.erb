@@ -67,4 +67,6 @@
   <%= file_field_tag :file %>
   <%= submit_tag "Upload File" %>
 <% end %>
-
+<br>
+<h3>Export Customers</h3> 
+<%= link_to "CSV File", customers_path(format: "csv") %>

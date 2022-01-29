@@ -27,13 +27,6 @@ class Customer < ApplicationRecord
     end
 
     def self.to_csv
-        # CSV.generate do |csv|
-        #     csv << column_names
-        #     all.each do |customer|
-        #         csv << customer.attributes.values_at(*column_names)
-        #     end
-        # end
-
         attributes = ["first_name", "last_name", "vehicle_type", "vehicle_name", "vehicle_length"]
         CSV.generate do |csv|
             csv << attributes
