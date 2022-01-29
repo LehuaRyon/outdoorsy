@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
         Customer.all.sort_by { |customer| [customer[:first_name], customer[:last_name]] }
     end
 
-    # Previous method was only capable of accepting only one separator value
+    # previous method I had was only capable of accepting only one separator value
     # col_sep only accepts one value as a string
     # This method accepts both, more dynamic
     def self.import(file)
@@ -57,6 +57,20 @@ class Customer < ApplicationRecord
         vehicle_name = downcased_vehicle_names.find { |name| name == search_downcase_vehicle_name}.titleize
         if vehicle_name
           self.where(vehicle_name: vehicle_name)
+        else
+          Customer.order_by_created_at
+        end
+    end
+
+    def self.search_by_vehicle_type(search)
+        search_downcase_vehicle_type = search.downcase
+        downcased_vehicle_types = Customer.all.map { |customer| customer.vehicle_type.downcase}
+        vehicle_type = downcased_vehicle_types.find { |name| name == search_downcase_vehicle_type}
+        if vehicle_type == "rv"
+            rv_vehicle_type = vehicle_type.upcase
+            self.where(vehicle_type: rv_vehicle_type)
+        elsif vehicle_type
+            self.where(vehicle_type: vehicle_type)
         else
           Customer.order_by_created_at
         end

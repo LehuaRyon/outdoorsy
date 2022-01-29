@@ -22,6 +22,11 @@
   <%= form.submit "Search" %>
 <% end %>
 <br>
+<%= form_with url: customers_path, method: :get do |form| %>
+  <%= form.label :search_vehicle_type, "Search by Vehicle Type:" %>
+  <%= form.text_field :search_vehicle_type %>
+  <%= form.submit "Search" %>
+<% end %>
 
 <div class="media">
   <div class="media-body">

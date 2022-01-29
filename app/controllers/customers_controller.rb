@@ -12,11 +12,12 @@ class CustomersController < ApplicationController
       @customers = Customer.search_by_first_name_or_last_name(params[:search_by_first_name_or_last_name])
     elsif params[:search_vehicle_name]
       @customers = Customer.search_by_vehicle_name(params[:search_vehicle_name])
+    elsif params[:search_vehicle_type]
+      @customers = Customer.search_by_vehicle_type(params[:search_vehicle_type])
     else
       @customers = Customer.order_by_created_at
       respond_to do |format|
         format.html
-        # format.csv{ render text: @customers.to_csv }
         format.csv { send_data @customers.to_csv, filename: "customers-#{Date.today}.csv" }
       end  
     end 
