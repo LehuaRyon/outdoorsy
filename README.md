@@ -2,7 +2,7 @@
 A small tool for a a fake company called Outdoor.sy that take some of their customer lists and returns the data in various sorted orders.
 
 ## Description
-This app was built for the [The Wanderlust Group's](https://flatironschool.com/) code exercise and is meant to let Outdoor.sy add data from an upload file that is separated by a pip or comma.  The customers' data is shown in a table with the column names: Full Name, Email, Vehicle Name, Vehicle Type, Vehicle Length.  The data can be sorted by: Full Name, Vehicle Type, or Vehicle Length.  The data can also be searched through for a specific customer by the customer's First name, Last name, or Vehicle Name.  When searched by Vehicle Type, the customers that have the same Vehicle Type that matches the searched input will show on the table.
+This app was built for the [The Wanderlust Group's](https://flatironschool.com/) code exercise and is meant to let Outdoor.sy add data from an upload file that is separated by a pip or comma.  The customers' data is shown in a table with the column names: Full Name, Email, Vehicle Name, Vehicle Type, Vehicle Length.  The data can be sorted by: Full Name, Vehicle Type, or Vehicle Length.  The data can also be searched through for a specific customer by the customer's First name, Last name, or Vehicle Name.  When searched by Vehicle Type, the customers that have the same Vehicle Type that matches the searched input will show on the table.  Outdoor.sy can create a new customer manually, delete any manually created customer as well as imported customer, and export a CSV file of all the data on the customer's table.
 
 ## Local Installation
 To install and run the app on your local machine:

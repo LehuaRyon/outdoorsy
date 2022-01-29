@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[ show edit update destroy ]
+  before_action :set_customer, only: %i[ destroy ]
 
   def index
     if params[:order] == 'vehicle_type'
@@ -21,22 +21,10 @@ class CustomersController < ApplicationController
         format.csv { send_data @customers.to_csv, filename: "customers-#{Date.today}.csv" }
       end  
     end 
-
-    # respond to cvs call, create cvs file for you
-    # respond_to do |format|
-    #   format.html
-    #   format.csv{ render text: @customers.to_csv }
-    # end  
-  end
-
-  def show
   end
 
   def new
     @customer = Customer.new
-  end
-
-  def edit
   end
 
   def create
@@ -48,18 +36,6 @@ class CustomersController < ApplicationController
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to customer_url(@customer), notice: "Customer was successfully updated." }
-        format.json { render :show, status: :ok, location: @customer }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
