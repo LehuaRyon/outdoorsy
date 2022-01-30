@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Customers - Total: <%= Customer.count %> </h1>
-
-<p>Create: <%= link_to 'New Customer', new_customer_path %></p>
+<h3>Import Customers</h3>
+<%= form_tag import_customers_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload File" %>
+<% end %>
+<br>
+<h3>Export Customers (Total: <%= Customer.count %>): <%= link_to "CSV File", customers_path(format: "csv") %> </h3> 
 
 <p>Sort by: 
 <%= link_to "Full Name", customers_path(order: 'full_name') %>
@@ -63,13 +67,3 @@
   </div>
 </div>
 
-<br>
-
-<h3>Import Customers</h3>
-<%= form_tag import_customers_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload File" %>
-<% end %>
-<br>
-<h3>Export Customers</h3> 
-<%= link_to "CSV File", customers_path(format: "csv") %>
