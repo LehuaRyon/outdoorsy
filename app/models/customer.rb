@@ -54,11 +54,12 @@ class Customer < ApplicationRecord
     def self.search_by_vehicle_name(search)
         search_downcase_vehicle_name = search.downcase
         downcased_vehicle_names = Customer.all.map { |customer| customer.vehicle_name.downcase}
-        vehicle_name = downcased_vehicle_names.find { |name| name == search_downcase_vehicle_name}.titleize
-        if vehicle_name
-          self.where(vehicle_name: vehicle_name)
+        vehicle_name = downcased_vehicle_names.find { |name| name == search_downcase_vehicle_name}
+        if vehicle_name != nil
+            titleized_vehicle_name = vehicle_name.titleize
+            self.where(vehicle_name: titleized_vehicle_name)
         else
-          Customer.order_by_created_at
+            Customer.order_by_created_at
         end
     end
 

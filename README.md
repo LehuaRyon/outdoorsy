@@ -20,6 +20,16 @@ To install and run the app on your local machine:
 • PostgreSQL
 • Bootstrap
 
+## Future Improvements
+1. User Friendly Interaction Upgrades:
+    a. Create dropdown menu for searching by Vehicle Type
+    b. Search Vehicle Name by partial input
+    c. Toggle sort functionality on table columns
+2. Increase Import Capacity:
+    a. Import more than one CSV file to the database at once
+3. Outdoor.sy Employee Registration
+    a. Add Signup, Login, and Logout functionality so people outside the Outdoor.sy network don't have access to Outdoor.sy's customers' information
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/LehuaRyon/outdoorsy. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/LehuaRyon/outdoorsy/blob/main/CODE_OF_CONDUCT.md).
