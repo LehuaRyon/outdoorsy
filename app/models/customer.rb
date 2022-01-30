@@ -40,12 +40,15 @@ class Customer < ApplicationRecord
         search_downcase_first_name_or_last_name = search.downcase
         first_names = Customer.all.map { |customer| customer.first_name}
         last_names = Customer.all.map { |customer| customer.last_name}
-        downcased_first_names_and_last_names = Customer.all.map { |customer| customer.full_name.downcase}
-        first_name_or_last_name = downcased_first_names_and_last_names.join(" ").split(" ").find { |name| name == search_downcase_first_name_or_last_name}.titleize
-        if first_names.include?(first_name_or_last_name)
-            self.where(first_name: first_name_or_last_name)
-        elsif last_names.include?(first_name_or_last_name)
-            self.where(last_name: first_name_or_last_name)
+        first_names_and_last_names = Customer.all.map { |customer| customer.full_name.downcase}.join(" ").split(" ")
+        first_name_or_last_name = first_names_and_last_names.find { |name| name == search_downcase_first_name_or_last_name}
+        if first_name_or_last_name != nil
+            titleized_name = first_name_or_last_name.titleize
+            if first_names.include?(titleized_name)
+                self.where(first_name: titleized_name)
+            else last_names.include?(titleized_name)
+                self.where(last_name: titleized_name)
+            end
         else
           Customer.order_by_created_at
         end
