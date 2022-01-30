@@ -22,13 +22,13 @@ To install and run the app on your local machine:
 
 ## Future Improvements
 1. User Friendly Interaction Upgrades:
-    a. Create dropdown menu for searching by Vehicle Type
-    b. Search Vehicle Name by partial input
-    c. Toggle sort functionality on table columns
+    1. Create dropdown menu for searching by Vehicle Type
+    2. Search Vehicle Name by partial input
+    3. Toggle sort functionality on table columns
 2. Increase Import Capacity:
-    a. Import more than one CSV file to the database at once
+    1. Import more than one CSV file to the database at once
 3. Outdoor.sy Employee Registration
-    a. Add Signup, Login, and Logout functionality so people outside the Outdoor.sy network don't have access to Outdoor.sy's customers' information
+    1. Add Signup, Login, and Logout functionality so people outside the Outdoor.sy network don't have access to Outdoor.sy's customers' information
 
 ## Contributing
 
