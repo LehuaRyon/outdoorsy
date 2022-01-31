@@ -37,8 +37,6 @@
     <table class="table table-success table-hover">
       <thead>
         <tr>
-          <%# <th>First name</th>
-          <th>Last name</th> %>
           <th>Full Name</th>
           <th>Email</th>
           <th>Vehicle Name</th>
@@ -51,14 +49,11 @@
       <tbody>
         <% @customers.each do |customer| %>
           <tr>
-            <%# <td><%= customer.first_name %>
-            <%# <td><%= customer.last_name %>
             <td><%= customer.full_name%></td>
             <td><%= customer.email %></td>
             <td><%= customer.vehicle_name %></td>
             <td><%= customer.vehicle_type %></td>
             <td><%= customer.vehicle_length %> Feet</td>
-            <%# <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }</td> %>
             <td><%= button_to 'Delete', customer, method: :delete, class: "btn btn-outline-danger" %></td>
           </tr>
         <% end %>
