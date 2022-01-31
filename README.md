@@ -1,5 +1,5 @@
 # Outdoor.sy
-A small tool for a a fictional company called Outdoor.sy that takes some of their customer lists and returns the data in various sorted orders.
+A small tool for a a fictional company called Outdoor.sy that takes some of their customer lists and returns the data in various sorted orders. View the live site here! [Outdoor.sy](https://outdoor-sy.herokuapp.com/)
 
 [![Outdoor.sy Demo](https://cdn.loom.com/sessions/thumbnails/94be3b26333e45dd970e40a7dd611a89-with-play.gif)](https://www.loom.com/share/94be3b26333e45dd970e40a7dd611a89 "Outdoor.sy Demo")
 
