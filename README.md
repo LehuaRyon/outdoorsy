@@ -16,7 +16,7 @@ To install and run the app on your local machine:
 8. Go to `http://localhost:3000/` to view the app!
 
 ## Technologies
-• Ruby on Rails
+Ruby on Rails
 • PostgreSQL
 • Bootstrap
 
@@ -24,7 +24,8 @@ To install and run the app on your local machine:
 1. User Friendly Interaction Upgrades:
     1. Create dropdown menu for searching by Vehicle Type
     2. Search Vehicle Name by partial input
-    3. Toggle sort functionality on table columns
+    3. Search Customer First or Last Name by partial input
+    4. Toggle sort functionality on table columns
 2. Increase Import Capacity:
     1. Import more than one CSV file to the database at once
 3. Outdoor.sy Employee Registration
