@@ -35,6 +35,13 @@
           </div>
       </nav>
 
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
       <%= yield %>
 
     </div> 
