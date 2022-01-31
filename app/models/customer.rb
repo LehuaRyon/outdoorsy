@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+    validates :first_name, :last_name, :email, :vehicle_type, :vehicle_name, :vehicle_length, presence: true
     scope :order_by_vehicle_type, -> {customer(vehicle_type: :asc)}
     scope :order_by_vehicle_type, -> {customer(vehicle_length: :asc)}
     scope :order_by_created_at, -> {order(created_at: :desc)}
