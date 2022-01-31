@@ -11,22 +11,22 @@
     </div>
   <% end %>
   <div class="form-group">
-    <%= f.label :first_name %><br>
+    <%= f.label :first_name, class: "text-light font-weight-bold" %><br>
     <%= f.text_field :first_name, class: 'form-control' %>
     <br>
-    <%= f.label :last_name %><br>
+    <%= f.label :last_name, class: "text-light font-weight-bold" %><br>
     <%= f.text_field :last_name, class: 'form-control' %>
     <br>
-    <%= f.label :email %><br>
+    <%= f.label :email, class: "text-light font-weight-bold" %><br>
     <%= f.email_field :email, class: 'form-control' %>
     <br>
-    <%= f.label :vehicle_name %>
+    <%= f.label :vehicle_name, class: "text-light font-weight-bold" %>
     <%= f.text_field :vehicle_name, class: 'form-control' %>
     <br>
-    <%= f.label :vehicle_type %>
+    <%= f.label :vehicle_type, class: "text-light font-weight-bold" %>
     <%= f.text_field :vehicle_type, class: 'form-control' %>
     <br>
-    <%= f.label :vehicle_length %><br>
+    <%= f.label :vehicle_length, class: "text-light font-weight-bold" %><br>
     <%= f.number_field :vehicle_length, class: 'form-control' %>
     <br>
     <%= f.submit 'Create Customer', class: 'btn btn-success' %>
