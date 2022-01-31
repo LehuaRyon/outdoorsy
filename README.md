@@ -28,8 +28,6 @@ Ruby on Rails
     2. Search Vehicle Name by partial input
     3. Search Customer First or Last Name by partial input
     4. Toggle sort functionality on table headings
-    5. 
-    6.
 2. Increase Import Capacity:
     1. Import more than one CSV file to the database at once
 3. Outdoor.sy Employee Registration:
